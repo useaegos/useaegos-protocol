@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aegos | Signals first, crowd second</title>
+<meta name="description" content="Aegos tracks the tokens drawing the heaviest boosts across Solana and arranges them into one quick-scan board.">
+<meta property="og:title" content="Aegos">
+<meta property="og:image" content="https://aegos.online/assets/aegos-logo.png">
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="./css/tokens.css">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="preload" as="image" href="./assets/aegos-mark.png">
+<script type="module" src="./js/main.js"></script>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <div class="top-bar wrap">
+    <a class="brand" href="#hero" aria-label="Aegos home">
+      <img src="./assets/aegos-lockup.png" alt="Aegos" width="720" height="566" class="brand-img">
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#board">Board</a><a href="#method">Method</a><a href="#pipeline">Pipeline</a><a href="#roadmap">Roadmap</a>
+    </nav>
+    <div class="top-right">
+      <div class="pill" id="status-pill" data-state="connecting" role="status">
+        <span class="dot" aria-hidden="true"></span><span id="status-text">Connecting</span>
+      </div>
+      <div class="socials">
+        <span class="soc" data-social="x" data-label="X" role="img" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </span>
+        <span class="soc" data-social="github" data-label="GitHub" role="img" aria-label="GitHub">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="ca wrap" data-anchor="ca-slot" data-state="inert">
+    <span class="ca-label">Token address</span>
+    <button type="button" class="ca-btn" data-anchor="ca-copy" disabled aria-disabled="true" aria-describedby="ca-hint">
+      <span class="ca-value" data-anchor="ca-value">· · · · · · · · · · · · · · · ·</span>
+      <span class="ca-hint" id="ca-hint" data-anchor="ca-hint" aria-live="polite">Not announced</span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero" data-parallax>
+    <div class="hero-mesh" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap hero-in">
+      <div class="hero-copy" data-copy>
+        <p class="eyebrow hero-fade" style="--i:0">Aegos · Solana</p>
+        <h1 class="display">
+          <span class="hero-line"><span style="--i:0">Signals first.</span></span>
+          <span class="hero-line"><span style="--i:1" class="accent">Crowd second.</span></span>
+        </h1>
+        <p class="lede hero-fade" style="--i:2">Aegos keeps an eye on the busiest Solana tokens and folds scattered chatter into a single board that rewards a quick glance.</p>
+        <div class="cta hero-fade" style="--i:3">
+          <a class="btn btn-primary" href="#board">Open the board <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-secondary" href="#method">Our method</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="layer" data-depth="0.35"><div class="sun"></div></div>
+        <div class="layer" data-depth="0.8"><img class="hero-mark" src="./assets/aegos-mark.png" alt="" width="512" height="512"></div>
+        <div class="layer" data-depth="1.3">
+          <svg class="reticle" viewBox="0 0 120 120"><circle cx="60" cy="60" r="38" fill="none" stroke="currentColor" stroke-width="1"/><path d="M60 8v34M60 78v34M8 60h34M78 60h34" stroke="currentColor" stroke-width="1"/><rect x="56" y="56" width="8" height="8" class="reticle-core"/></svg>
+        </div>
+        <div class="layer" data-depth="0.55"><span class="tag tag-a">flow</span></div>
+        <div class="layer" data-depth="1.05"><span class="tag tag-b">depth</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="Live token ticker">
+    <ul class="ticker-track" id="ticker-track"><li class="tk tk-skel"><span class="tk-s">· · ·</span><span class="tk-p">· · ·</span></li></ul>
+  </div>
+
+  <section class="sec" id="board" aria-labelledby="board-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Live board</p>
+        <h2 class="title" id="board-h">Solana's ten loudest tokens.</h2>
+        <p class="muted sec-sub">Ordered by boost spend, priced from the deepest pool, redrawn each minute while this tab stays open. First place on the list is held back for $AEGOS.</p>
+      </header>
+
+      <div class="netstrip" data-reveal>
+        <span class="netitem"><span class="eyebrow">Chain</span><b>Solana mainnet</b></span>
+        <span class="netitem"><span class="eyebrow">Slot</span><b class="num" id="net-slot">—</b></span>
+      </div>
+
+      <div class="board" role="table" aria-label="Token board" data-reveal>
+        <div class="mrow mhead" role="row">
+          <div class="c c-rank" role="columnheader">#</div>
+          <div class="c c-token" role="columnheader">Token</div>
+          <div class="c c-price" role="columnheader">Price</div>
+          <div class="c c-ch" role="columnheader">24h</div>
+          <div class="c c-vol" role="columnheader">Volume</div>
+          <div class="c c-liq" role="columnheader">Liquidity</div>
+        </div>
+        <div id="board-body" role="rowgroup">
+          <div class="mrow own" id="own-row" role="row" data-anchor="own-row" data-own-state="absent" data-spot>
+            <div class="c c-rank">1</div>
+            <div class="c c-token">
+              <span class="tile tile-brand"><img src="./assets/aegos-mark.png" alt="" width="512" height="512"></span>
+              <div class="names"><b class="sym">AEGOS</b><span class="nm">Pinned for our token</span></div>
+            </div>
+            <div class="c ph" aria-label="Data not available until the contract is announced">· · · · ·</div>
+          </div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+          <div class="mrow skel" aria-hidden="true"><div class="c c-rank"></div><div class="c c-token"><span class="tile"></span><span class="bar w60"></span></div><div class="c c-price"><span class="bar"></span></div><div class="c c-ch"><span class="bar"></span></div><div class="c c-vol"><span class="bar"></span></div><div class="c c-liq"><span class="bar"></span></div></div>
+        </div>
+      </div>
+      <p class="board-note" id="board-note" hidden role="status">—</p>
+      <p class="fine" data-copy>Every figure arrives untouched from open market feeds, shown for curiosity rather than guidance.</p>
+    </div>
+  </section>
+
+  <section class="sec sec-raised" id="why" aria-labelledby="why-h">
+    <div class="wrap narrow" data-copy>
+      <p class="eyebrow" data-reveal>Why Aegos</p>
+      <h2 class="statement" id="why-h" data-reveal>Attention scatters in seconds. Capital leaves tracks that linger.</h2>
+      <p class="lede muted" data-reveal>Timelines churn, every pool looks urgent, every ticker screams. Aegos stares hard at tracks rather than screaming, so the page reflects what truly moved.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="method" aria-labelledby="method-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Method</p>
+        <h2 class="title" id="method-h">Gather widely. Cross-check hard. Rank plainly.</h2>
+      </header>
+      <div class="cards" data-copy>
+        <article class="card" data-spot data-reveal style="--i:0">
+          <span class="num-badge">01</span>
+          <h3>Gather</h3>
+          <p>Boosts, pools, swaps and wallet movement get pulled from open Solana sources into one working set.</p>
+        </article>
+        <article class="card" data-spot data-reveal style="--i:1">
+          <span class="num-badge">02</span>
+          <h3>Cross-check</h3>
+          <p>Each claim has to survive a second source. Thin pools, copy-paste tokens and lopsided volume get marked down.</p>
+        </article>
+        <article class="card" data-spot data-reveal style="--i:2">
+          <span class="num-badge">03</span>
+          <h3>Rank</h3>
+          <p>What remains is sorted by a short list of visible rules, so a reader can always trace why a token holds its position.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-raised" id="pipeline" aria-labelledby="pipe-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Pipeline</p>
+        <h2 class="title" id="pipe-h">Four stages between raw ticks and a readable board.</h2>
+      </header>
+      <div class="tabs" data-reveal>
+        <div class="tablist" role="tablist" aria-label="Pipeline stages">
+          <button role="tab" id="t1" aria-controls="p1" class="tab">Collect</button>
+          <button role="tab" id="t2" aria-controls="p2" class="tab">Correlate</button>
+          <button role="tab" id="t3" aria-controls="p3" class="tab">Score</button>
+          <button role="tab" id="t4" aria-controls="p4" class="tab">Surface</button>
+        </div>
+        <div class="panels" data-copy>
+          <div role="tabpanel" id="p1" aria-labelledby="t1" class="panel"><p>Listings, boosts and pool snapshots land from public endpoints, kept exactly as received.</p><p class="mono-note">source → buffer</p></div>
+          <div role="tabpanel" id="p2" aria-labelledby="t2" class="panel" hidden><p>Tokens are tied to the pools that trade them, and pools to the flows that fill them, so duplicates collapse into one record.</p><p class="mono-note">token ↔ pool ↔ flow</p></div>
+          <div role="tabpanel" id="p3" aria-labelledby="t3" class="panel" hidden><p>Depth, turnover and spend are weighed against each other. A loud token with shallow water scores low.</p><p class="mono-note">depth × turnover × spend</p></div>
+          <div role="tabpanel" id="p4" aria-labelledby="t4" class="panel" hidden><p>Each result reaches the board with raw numbers alongside, ready for whoever wants to challenge it.</p><p class="mono-note">score → board</p></div>
+        </div>
+        <svg class="pipe-svg" viewBox="0 0 600 40" aria-hidden="true" preserveAspectRatio="none"><path class="pipe-line" pathLength="100" d="M0 20 H600"/><circle class="pipe-dot" cx="0" cy="20" r="4"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="signals" aria-labelledby="sig-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Signals</p>
+        <h2 class="title" id="sig-h">Four tells worth watching.</h2>
+      </header>
+      <div class="grid4" data-copy>
+        <div class="tilecard" data-spot data-reveal style="--i:0"><h3>Flow</h3><p>Where size is moving, and whether it keeps moving after the first burst.</p></div>
+        <div class="tilecard" data-spot data-reveal style="--i:1"><h3>Depth</h3><p>How much a pool can absorb before its price bends.</p></div>
+        <div class="tilecard" data-spot data-reveal style="--i:2"><h3>Cohorts</h3><p>Whether buyers show up as a crowd or as one actor wearing many hats.</p></div>
+        <div class="tilecard" data-spot data-reveal style="--i:3"><h3>Pace</h3><p>How quickly interest builds, then how fast it drains.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-raised" id="steps" aria-labelledby="steps-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Using it</p>
+        <h2 class="title" id="steps-h">Look, question, decide.</h2>
+      </header>
+      <ol class="steps" data-copy>
+        <li data-reveal style="--i:0"><span class="step-n">1</span><div><h3>Look</h3><p>Open the board and skim the leading rows.</p></div></li>
+        <li data-reveal style="--i:1"><span class="step-n">2</span><div><h3>Question</h3><p>Set cost, turnover and depth next to each other before trusting any headline.</p></div></li>
+        <li data-reveal style="--i:2"><span class="step-n">3</span><div><h3>Decide</h3><p>Act on personal judgment. Aegos sharpens the view and stops there.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec" id="tools" aria-labelledby="tools-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow">Toolkit</p>
+        <h2 class="title" id="tools-h">One board now, a wider kit next.</h2>
+      </header>
+      <div class="cards cards4" data-copy>
+        <article class="card" data-spot data-reveal style="--i:0"><span class="chip chip-live">Live</span><h3>Tape</h3><p>The board above, fed by open market data.</p></article>
+        <article class="card" data-spot data-reveal style="--i:1"><span class="chip">Planned</span><h3>Watchlists</h3><p>Pin the tokens you care about and keep them in view.</p></article>
+        <article class="card" data-spot data-reveal style="--i:2"><span class="chip">Planned</span><h3>Alerts</h3><p>A nudge when depth or pace crosses a line you set.</p></article>
+        <article class="card" data-spot data-reveal style="--i:3"><span class="chip">Planned</span><h3>Field notes</h3><p>Brief write-ups that unpack a move once it has played out.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-ink" id="roadmap" aria-labelledby="road-h">
+    <div class="wrap">
+      <header class="sec-head" data-copy data-reveal>
+        <p class="eyebrow on-ink">Roadmap</p>
+        <h2 class="title on-ink" id="road-h">Built in four passes.</h2>
+      </header>
+      <ol class="road" data-copy>
+        <li data-spot data-reveal style="--i:0"><span class="eyebrow on-ink">Pass one</span><h3>Foundation</h3><p>Brand, live board and the held-back slot for our token.</p></li>
+        <li data-spot data-reveal style="--i:1"><span class="eyebrow on-ink">Pass two</span><h3>Scoring layer</h3><p>Ranking rules printed beside every position.</p></li>
+        <li data-spot data-reveal style="--i:2"><span class="eyebrow on-ink">Pass three</span><h3>Open tooling</h3><p>Watchlists, alerts and an open interface for builders.</p></li>
+        <li data-spot data-reveal style="--i:3"><span class="eyebrow on-ink">Pass four</span><h3>Holder voice</h3><p>Token holders help choose what gets built next.</p></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <img src="./assets/aegos-lockup.png" alt="Aegos" width="720" height="566" class="foot-img" loading="lazy">
+    <p class="fine" data-copy>aegos.online · Solana. Aegos shares market readings for curiosity and research. Nothing here invites a purchase or a sale.</p>
+  </div>
+</footer>
+</body>
+</html>

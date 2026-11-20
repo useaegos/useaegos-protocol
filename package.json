@@ -1,0 +1,15 @@
+{
+  "name": "aegos",
+  "version": "0.1.0",
+  "description": "Aegos — signal before the crowd, on Solana.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "verify": "node scripts/verify.mjs",
+    "serve": "node scripts/serve.mjs",
+    "assets": "python -I scripts/prepare-assets.py"
+  },
+  "engines": { "node": ">=18" }
+}
